@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from 'lucide-react';
 import CustomButton from '../components/ui/CustomButton';
+import { useToast } from '../hooks/use-toast';
+import { supabase } from '../integrations/supabase/client';
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,17 +21,42 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Call the edge function to send email
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -157,9 +186,9 @@ const Contact = () => {
                   />
                 </div>
                 <div className="animate-fade-in" style={{ animationDelay: '0.7s' }}>
-                  <CustomButton type="submit" className="w-full">
+                  <CustomButton type="submit" className="w-full" disabled={isSubmitting}>
                     <Send className="mr-2 h-4 w-4" />
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </CustomButton>
                 </div>
               </form>
