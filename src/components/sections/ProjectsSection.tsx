@@ -81,13 +81,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const displayProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <section className="py-20 bg-background transition-colors duration-200">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 transition-colors duration-200">
             {title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-200">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto transition-colors duration-200">
             {subtitle}
           </p>
         </div>
@@ -96,7 +96,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {displayProjects.map((project, index) => (
             <div 
               key={project.id} 
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700 animate-fade-in hover-scale"
+              className="bg-card rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-border animate-fade-in hover-scale"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
@@ -110,35 +110,35 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors hover-scale"
+                    className="p-2 bg-card rounded-full hover:bg-muted transition-colors hover-scale"
                   >
-                    <ExternalLink className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    <ExternalLink className="w-5 h-5 text-card-foreground" />
                   </a>
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-white dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors hover-scale"
+                    className="p-2 bg-card rounded-full hover:bg-muted transition-colors hover-scale"
                   >
-                    <Github className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    <Github className="w-5 h-5 text-card-foreground" />
                   </a>
                 </div>
               </div>
               <div className="p-6">
-                <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 text-sm font-medium px-3 py-1 rounded-full mb-3 transition-colors duration-200">
+                <span className="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full mb-3 transition-colors duration-200">
                   {project.category}
                 </span>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-200">
+                <h3 className="text-xl font-bold text-card-foreground mb-2 transition-colors duration-200">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-200">
+                <p className="text-muted-foreground mb-4 transition-colors duration-200">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded transition-colors duration-200"
+                      className="text-sm bg-muted text-muted-foreground px-2 py-1 rounded transition-colors duration-200"
                     >
                       {tech}
                     </span>
@@ -146,7 +146,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </div>
                 <Link
                   to={`/projects/${project.id}`}
-                  className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center story-link"
+                  className="text-primary font-medium hover:text-primary/80 transition-colors inline-flex items-center story-link"
                 >
                   View Details
                   <ArrowRight className="ml-1 w-4 h-4" />
