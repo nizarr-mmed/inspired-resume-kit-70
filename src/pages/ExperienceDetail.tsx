@@ -226,7 +226,7 @@ const ExperienceDetail = () => {
       photos: [
         'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop',
-        '../public/assets/images/experience1/exp1.jpg'
+        'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg'
       ],
       relatedProjectId: 'security-knowledge-platform'
     },
