@@ -49,7 +49,7 @@ const ExperienceDetail = () => {
         'Established best practices for AI integration'
       ],
       photos: [
-        '../public/assets/images/experience1/exp1.jpg',
+        '/public/assets/images/experience1/exp1.jpg',
         'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=400&fit=crop',
         'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop'
       ],
