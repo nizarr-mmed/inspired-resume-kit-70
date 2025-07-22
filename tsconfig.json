@@ -5,7 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "/inspired-resume-kit-70/",
     "paths": {
       "@/*": ["./src/*"]
     },
