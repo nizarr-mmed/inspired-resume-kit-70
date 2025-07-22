@@ -21,9 +21,9 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
 
-    "baseUrl": ".",
+    "baseUrl": "inspired-resume-kit-70",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["inspired-resume-kit-70/src/*"]
     }
   },
   "include": ["src"]
